@@ -1,0 +1,16 @@
+﻿@using studies.auth.cookies
+@model UserCookie
+
+@if (Model != null)
+{
+    <li class="nav-item d-flex align-items-center">
+        <span class="me-2">@Model.UserName</span>
+        <a class="nav-link" asp-area="" asp-controller="MyPages" asp-action="Index">Profile</a>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link" asp-area="" asp-controller="MyPages" asp-action="Index">Login</a>
+    </li>
+}

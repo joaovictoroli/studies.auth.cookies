@@ -1,0 +1,48 @@
+﻿@using studies.auth.cookies.ViewModels;
+@*
+@if (ViewBag.IsUserLoggedIn == true)
+{
+    <div>
+        <p>Welcome! You are logged in.</p>
+        <a href="@Url.Action("Logout", "MyPages")">Logout</a>
+    </div>
+}
+else
+{
+    <div>
+        <p>Please <a href="@Url.Action("Login", "MyPages")">Login</a></p>
+    </div>
+} *@
+
+@model UserViewModel
+@try
+{
+    <div>
+        <h2>@Model.UserName</h2>
+        <p>Known As: @Model.KnownAs</p>
+
+        <h3>Addresses</h3>
+        <ul>
+            @foreach (var address in Model.Addresses)
+            {
+                <li>@address.CEP - @address.Bairro</li>
+            }
+        </ul>
+    </div>
+} catch (Exception ex)
+{
+    Console.WriteLine("Error ", ex.Message);
+}
+@if (ViewBag.IsUserLoggedIn == true)
+{
+    <div>
+        <a href="@Url.Action("Logout", "MyPages")">Logout</a>
+    </div>
+}
+else
+{
+    <div>
+        <p>Please <a href="@Url.Action("Login", "MyPages")">Login</a></p>
+    </div>
+}
+
